@@ -1,2 +1,2 @@
-# looker-demo-frontend
-Static frontend for Looker PDF report generation demo
+# Looker demo for PDF report generation
+Looker demo landing page

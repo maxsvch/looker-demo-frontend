@@ -1,0 +1,10 @@
+baseURL = "https://maxsvch.github.io/looker-report-generation/"
+languageCode = "en-us"
+title = "Looker demo"
+theme = "beautifulhugo"
+
+[params]
+name = "Looker demo"
+bio = "Looker demo for PDF report generation from a web application"
+description = "Looker demo for PDF report generation from a web application"
+logo = "img/logo.png"

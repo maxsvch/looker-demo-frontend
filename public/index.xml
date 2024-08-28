@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Welcome to CraftyKids Creations on CraftyKids Creations</title>
+    <link>http://localhost:1313/crafty-kids-creations/</link>
+    <description>Recent content in Welcome to CraftyKids Creations on CraftyKids Creations</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/crafty-kids-creations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/crafty-kids-creations/cancel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/crafty-kids-creations/cancel/</guid>
+      <description>&lt;!doctype html&gt; Checkout canceled Forgot to add something to your cart? Shop around then come back to pay! </description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/crafty-kids-creations/success/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/crafty-kids-creations/success/</guid>
+      <description>&lt;!doctype html&gt; Thanks for your order! We appreciate your business! If you have any questions, please email orders@example.com. </description>
+    </item>
+  </channel>
+</rss>
