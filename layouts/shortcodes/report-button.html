@@ -68,35 +68,27 @@
                         "https://pdfgenbackend-qgaeavvpva-ew.a.run.app/generate-report?dashboard_title=TestSodexi";
                     // window.location.href = cloudRunUrl;
 
-                    try {
-                        // Make a request to the backend
-                        const response = await fetch(cloudRunUrl, {
-                            method: 'GET',
-                            headers: {
-                                'Accept': 'application/pdf',
-                            },
-                        });
-
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-
-                        // Create a Blob from the response
-                        const blob = await response.blob();
-
-                        // Create a link element to initiate the download
-                        const link = document.createElement('a');
-                        link.href = URL.createObjectURL(blob);
-                        link.download = 'report.pdf'; // You can set a different filename if necessary
-                        document.body.appendChild(link);
-                        link.click();
-
-                        // Clean up the link element
-                        document.body.removeChild(link);
-                    }
-                    catch (error) {
-                        console.error('Error downloading the file:', error);
-                    }
+                    fetch(cloudRunUrl)
+                        .then((response) => {
+                            if (!response.ok) {
+                                throw new Error("Network response was not ok");
+                            }
+                            return response.blob(); // Convert response to Blob
+                        })
+                        .then((blob) => {
+                            const link = document.createElement("a");
+                            link.href = URL.createObjectURL(blob);
+                            link.download = "report.pdf"; // Set default filename for download
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        })
+                        .catch((error) =>
+                            console.error(
+                                "There was a problem with the fetch operation:",
+                                error,
+                            ),
+                        );
                 });
         </script>
     </body>
