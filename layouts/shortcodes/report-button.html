@@ -68,32 +68,27 @@
                         "https://pdfgenbackend-qgaeavvpva-ew.a.run.app/generate-report?dashboard_title=TestSodexi";
                     // window.location.href = cloudRunUrl;
 
-                    const xhr = new XMLHttpRequest();
-                    xhr.open("GET", cloudRunUrl, true);
-                    xhr.responseType = "blob"; // Use blob for binary data
-
-                    xhr.onload = function () {
-                        if (xhr.status === 200) {
-                            const blob = xhr.response;
+                    fetch(cloudRunUrl)
+                        .then((response) => {
+                            if (!response.ok) {
+                                throw new Error("Network response was not ok");
+                            }
+                            return response.blob(); // Get the response as a Blob
+                        })
+                        .then((blob) => {
                             const link = document.createElement("a");
-                            link.href = URL.createObjectURL(blob);
-                            link.download = "report.pdf"; // Set default filename for download
+                            link.href = URL.createObjectURL(blob); // Create a URL for the Blob
+                            link.download = "report.pdf"; // Set default filename for the download
                             document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                        } else {
+                            link.click(); // Programmatically click the link to start the download
+                            document.body.removeChild(link); // Clean up the DOM
+                        })
+                        .catch((error) => {
                             console.error(
-                                "Failed to fetch file:",
-                                xhr.statusText,
+                                "There was a problem with the fetch operation:",
+                                error,
                             );
-                        }
-                    };
-
-                    xhr.onerror = function () {
-                        console.error("There was a problem with the request.");
-                    };
-
-                    xhr.send();
+                        });
                 });
         </script>
     </body>
