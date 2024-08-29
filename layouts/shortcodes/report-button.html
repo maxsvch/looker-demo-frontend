@@ -68,42 +68,29 @@
                         "https://pdfgenbackend-qgaeavvpva-ew.a.run.app/generate-report?dashboard_title=TestSodexi";
                     // window.location.href = cloudRunUrl;
 
-                    // Create a new XMLHttpRequest
-                    const xhr = new XMLHttpRequest();
+                    /const xhr = new XMLHttpRequest();
+                            xhr.open("GET", cloudRunUrl, true);
+                            xhr.responseType = "blob"; // Use blob for binary data
 
-                    xhr.open("GET", cloudRunUrl, true);
-                    xhr.responseType = "blob"; // We want a blob response
+                            xhr.onload = function () {
+                                if (xhr.status === 200) {
+                                    const blob = xhr.response;
+                                    const link = document.createElement('a');
+                                    link.href = URL.createObjectURL(blob);
+                                    link.download = 'report.pdf'; // Set default filename for download
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    document.body.removeChild(link);
+                                } else {
+                                    console.error('Failed to fetch file:', xhr.statusText);
+                                }
+                            };
 
-                    xhr.onload = function () {
-                        if (xhr.status >= 200 && xhr.status < 300) {
-                            // Create a Blob from the response
-                            const blob = xhr.response;
+                            xhr.onerror = function () {
+                                console.error('There was a problem with the request.');
+                            };
 
-                            // Create a link element to initiate the download
-                            const link = document.createElement("a");
-                            link.href = URL.createObjectURL(blob);
-                            link.download = "report.pdf"; // You can set a different filename if necessary
-                            document.body.appendChild(link);
-                            link.click();
-
-                            // Clean up the link element
-                            document.body.removeChild(link);
-                        } else {
-                            console.error(
-                                "Error downloading the file:",
-                                xhr.statusText,
-                            );
-                        }
-                    };
-
-                    xhr.onerror = function () {
-                        console.error(
-                            "Network error occurred while downloading the file.",
-                        );
-                    };
-
-                    // Send the request
-                    xhr.send();
+                            xhr.send();
                 });
         </script>
     </body>
