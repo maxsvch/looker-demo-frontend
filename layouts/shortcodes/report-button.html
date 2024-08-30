@@ -67,7 +67,7 @@
                     const cloudRunUrl =
                         "https://pdfgenbackend-qgaeavvpva-ew.a.run.app/generate-report?dashboard_title=TestSodexi";
 
-                    fetch(cloudRunUrl, { mode: "no-cors" })
+                    fetch(cloudRunUrl})// { mode: "no-cors" })
                         .then((response) => {
                             if (!response.ok) {
                                 throw new Error("Network response was not ok");
