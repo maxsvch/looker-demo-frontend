@@ -69,9 +69,10 @@
 
                     fetch(cloudRunUrl, { mode: "no-cors" })
                         .then((response) => {
-                            if (!response.ok) {
-                                throw new Error("Network response was not ok");
-                            }
+                            // if (!response.ok) {
+                            //     throw new Error(`Network response was not ok : ${response.status}``);
+                            // }
+                            console.log("Response : ", response);
                             return response.blob(); // Get the response as a Blob
                         })
                         .then((blob) => {
