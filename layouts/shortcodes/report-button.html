@@ -72,16 +72,13 @@
                             if (!response.ok) {
                                 throw new Error("Network response was not ok");
                             }
-                            console.log("url response : ", response);
-                            return response.json(); // Get the response as a Blob
+                            return response.blob(); // Get the response as a Blob
                         })
-                        .then((body) => {
-                            const url = URL.createObjectURL(body.url); // Create a URL for the Blob
+                        .then((blob) => {
+                            const url = URL.createObjectURL(blob); // Create a URL for the Blob
 
                             // Open the file in a new tab
-                            const newTab = window.open(
-                                `https://pdfgenbackend-qgaeavvpva-ew.a.run.app/${url}`,
-                            );
+                            const newTab = window.open(url);
                             if (!newTab) {
                                 // If the new tab was blocked, handle this case
                                 alert(
